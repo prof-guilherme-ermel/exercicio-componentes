@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade Copa</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ebeeed;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        header {
+            background: #8a173c;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .usuario {
+            color: white;
+            margin-right: 30px;
+        }
+
+        main {
+            display: flex;
+        }
+
+        li {
+            list-style: none;
+            opacity: .9;
+        }
+
+        sidebar ul {
+            margin: 0;
+            padding: 10px 30px;
+            height: 100%;
+            background: #f8f8ff;
+        }
+
+        section {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        section li {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 400px;
+            margin: auto;
+            margin-bottom: 8px;
+            background: #f8f8f8;
+        }
+
+        section li .titulo {
+            padding-bottom: 5px;
+        }
+
+        section li img {
+            border-radius: 20px;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            cursor: pointer;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <header>
+        <img src="./images/logo.png" height="80">
+        <span class="usuario">{{ usuario }}</span>
+    </header>
+    <main>
+        <sidebar>
+            <ul>
+                <li>Seleções</li>
+                <li>Jogos</li>
+                <li>Artilharia</li>
+            </ul>
+        </sidebar>
+        <section>
+            <ul>
+                <li v-for="n in noticias">
+                    <div class="titulo">{{ n.titulo }}</div>
+                    <img :src="`./images/${n.imagem}`" width="320">
+                </li>
+            </ul>
+        </section>
+    </main>
+</div>
+<script src="https://unpkg.com/vue@3"></script>
+<script>
+Vue.createApp({
+    data() {
+        return {
+            usuario: 'Guilherme',
+            noticias: [
+                { titulo: 'Início da copa no Catar', imagem: 'inicio-da-copa.png' },
+                { titulo: 'Benzema fora da copa', imagem: 'benzema-fora.jpg' },
+                { titulo: 'Escalação do Brasil', imagem: 'escalacao-brasil.webp' },
+            ],
+
+        }
+    },
+}).mount('#app');
+</script>    
+</body>
+</html>
